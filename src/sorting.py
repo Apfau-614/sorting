@@ -344,7 +344,7 @@ def quick_sorted(xs, cmp=cmp_standard, reverse=False):
     if len(xs) <= 1:
         return list(xs)
 
-   for x in xs:
+    for x in xs:
         result = cmp(x, pivot)
         if result < 0:
             less.append(x)
