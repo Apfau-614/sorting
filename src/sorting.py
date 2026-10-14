@@ -17,6 +17,7 @@ equivalently, the result of every call to cmp is negated.
 import math
 import random
 
+
 def cmp_standard(a, b):
     '''
     used for sorting from lowest to highest
@@ -46,7 +47,7 @@ def cmp_reverse(a, b):
     >>> cmp_reverse(322, 322)
     0
     '''
-    return -cmp_standards(a,b)
+    return -cmp_standard(a, b)
 
 
 def cmp_invert(cmp):
@@ -156,6 +157,7 @@ def cmp_nan_first(a, b):
     if math.isnan(b):
         return 1
     return cmp_standard(a, b)
+
 
 def _natural_chunks(s):
     '''
@@ -299,7 +301,6 @@ def merge_sorted(xs, cmp=cmp_standard, reverse=False):
         return list(xs)
 
     return _merged(left, right, cmp)
-
 
 
 def quick_sorted(xs, cmp=cmp_standard, reverse=False):

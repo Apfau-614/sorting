@@ -136,7 +136,7 @@ def largest_number(nums):
     strings = []
 
     for n in nums:
-        strings.append(str(n)
+        strings.append(str(n))
 
     sorted_strings = sorted(strings, key=cmp_to_key(cmp))
     output = ''.join(sorted_strings)
