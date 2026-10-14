@@ -53,7 +53,7 @@ def merge_intervals(intervals):
         if not current:
             current = [itv[0], itv[1]
             continue
-        if itv[0] <= current[1]
+                if itv[0] <= current[1]:
             current[1] = max(current[1], itv[1])
         else:
             out.append(current)
