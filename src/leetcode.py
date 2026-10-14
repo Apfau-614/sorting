@@ -17,6 +17,8 @@ without needing any hints.
 '''
 
 
+from functools import cmp_to_ke
+
 def merge_intervals(intervals):
     '''
     LeetCode 56 -- Merge Intervals
@@ -42,6 +44,23 @@ def merge_intervals(intervals):
     '''
     def key(interval):
         return interval[0]
+
+    sorted_itvs = sorted(intervals, key=key)
+    current = []
+    out = []
+
+    for itv in sorted_itvs:
+        if not current:
+            current = [itv[0], itv[1]
+            continue
+        if itv[0] <= current[1]
+            current[1] = max(current[1], itv[1])
+        else:
+            out.append(current)
+            current = [itv[0], itv[1]]
+        if current:
+            out.append(current)
+        return out
 
 
 def rank_teams(votes):
@@ -79,7 +98,14 @@ def rank_teams(votes):
     def key(team):
         # negated counts sort descending; the letter breaks ties
         return tuple(-n for n in counts[team]) + (team,)
-
+    for vote in votes:
+        for i in range(len(vote)):
+            team = vote[i]
+            if team not in counts:
+                counts[team] = ([0] * len(vote))
+            counts[team][i] += 1
+    sorted_teams = sorted(votes[0], key=key)
+    return ''.join(sorted_teams)
 
 def largest_number(nums):
     '''
@@ -108,6 +134,17 @@ def largest_number(nums):
             return -1
         return 1 if b + a > a + b else 0
 
+    strings = []
+
+    for n in nums:
+        strings.appen(str(n)
+
+    sorted_strings = sorted(strings, key=cmp_to_key(cmp))
+    output = ''.join(sorted_strings)
+
+    if result[0] == '0':
+        return '0'
+    return output
 
 def two_city_sched_cost(costs):
     '''
@@ -136,3 +173,14 @@ def two_city_sched_cost(costs):
     '''
     def key(cost):
         return cost[0] - cost[1]
+
+    sorted_costs = sorted(costs, key=key)
+    n = len(costs) // 2
+    total = 0
+
+    for i in range(len(sorted_costs)):
+        if i < n:
+            total += sorted_costs[i][0]
+        else:
+            total += sorted_costs[i][1]
+    return total
