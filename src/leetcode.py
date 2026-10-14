@@ -17,7 +17,8 @@ without needing any hints.
 '''
 
 
-from functools import cmp_to_ke
+from functools import cmp_to_key
+
 
 def merge_intervals(intervals):
     '''
@@ -105,6 +106,7 @@ def rank_teams(votes):
 
     sorted_teams = sorted(votes[0], key=key)
     return ''.join(sorted_teams)
+
 
 def largest_number(nums):
     '''
