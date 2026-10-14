@@ -291,14 +291,14 @@ def merge_sorted(xs, cmp=cmp_standard, reverse=False):
     >>> merge_sorted(['file10', 'file2', 'file1'], cmp=cmp_natural)
     ['file1', 'file2', 'file10']
     '''
-    mid = len(xs) // 2
-    left = merge_sorted(xs[:mid], cmp)
-    right = merge_sorted(xs[mid:], cmp)
-
     if reverse:
         cmp = cmp_invert(cmp)
     if len(xs) <= 1:
         return list(xs)
+
+    mid = len(xs) // 2
+    left = merge_sorted(xs[:mid], cmp)
+    right = merge_sorted(xs[mid:], cmp)
 
     return _merged(left, right, cmp)
 
@@ -335,16 +335,15 @@ def quick_sorted(xs, cmp=cmp_standard, reverse=False):
     >>> quick_sorted([float('nan'), 1, 5, 2, 3], cmp=cmp_nan_first)
     [nan, 1, 2, 3, 5]
     '''
-    pivot = random.choice(xs)
-    less = []
-    equal = []
-    greater = []
-
     if reverse:
         cmp = cmp_invert(cmp)
     if len(xs) <= 1:
         return list(xs)
 
+    pivot = random.choice(xs)
+    less = []
+    equal = []
+    greater = []
     for x in xs:
         result = cmp(x, pivot)
         if result < 0:
@@ -353,7 +352,6 @@ def quick_sorted(xs, cmp=cmp_standard, reverse=False):
             greater.append(x)
         else:
             equal.append(x)
-
     return quick_sorted(less, cmp) + equal + quick_sorted(greater, cmp)
 
 

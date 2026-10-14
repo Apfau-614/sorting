@@ -53,11 +53,14 @@ def merge_intervals(intervals):
     for itv in sorted_itvs:
         if not current:
             current = [itv[0], itv[1]]
-        elif itv[0] <= current[1]:
+            continue
+        if itv[0] <= current[1]:
             current[1] = max(current[1], itv[1])
         else:
             out.append(current)
             current = [itv[0], itv[1]]
+    if current:
+        out.append(current)
     return out
 
 
@@ -141,11 +144,11 @@ def largest_number(nums):
         strings.append(str(n))
 
     sorted_strings = sorted(strings, key=cmp_to_key(cmp))
-    output = ''.join(sorted_strings)
+    result = ''.join(sorted_strings)
 
-    if output[0] == '0':
+    if result[0] == '0':
         return '0'
-    return output
+    return result
 
 
 def two_city_sched_cost(costs):
