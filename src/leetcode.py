@@ -53,7 +53,7 @@ def merge_intervals(intervals):
         if not current:
             current = [itv[0], itv[1]
             continue
-                if itv[0] <= current[1]:
+        if itv[0] <= current[1]:
             current[1] = max(current[1], itv[1])
         else:
             out.append(current)
@@ -98,12 +98,14 @@ def rank_teams(votes):
     def key(team):
         # negated counts sort descending; the letter breaks ties
         return tuple(-n for n in counts[team]) + (team,)
+
     for vote in votes:
         for i in range(len(vote)):
             team = vote[i]
             if team not in counts:
                 counts[team] = ([0] * len(vote))
             counts[team][i] += 1
+
     sorted_teams = sorted(votes[0], key=key)
     return ''.join(sorted_teams)
 
@@ -137,14 +139,15 @@ def largest_number(nums):
     strings = []
 
     for n in nums:
-        strings.appen(str(n)
+        strings.append(str(n)
 
     sorted_strings = sorted(strings, key=cmp_to_key(cmp))
     output = ''.join(sorted_strings)
 
-    if result[0] == '0':
+    if output[0] == '0':
         return '0'
     return output
+
 
 def two_city_sched_cost(costs):
     '''
