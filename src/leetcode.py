@@ -58,9 +58,9 @@ def merge_intervals(intervals):
         else:
             out.append(current)
             current = [itv[0], itv[1]]
-        if current:
-            out.append(current)
-        return out
+    if current:
+        out.append(current)
+    return out
 
 
 def rank_teams(votes):
